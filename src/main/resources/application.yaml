@@ -12,7 +12,6 @@ spring:
         default_batch_fetch_size: 20
         # https://stackoverflow.com/questions/21257819/what-is-the-difference-between-hibernate-jdbc-fetch-size-and-hibernate-jdbc-batc
         jdbc.batch_size: 20
-        id.new_generator_mappings: false
   datasource:
     # ImMemory
     url: jdbc:h2:mem:voting
