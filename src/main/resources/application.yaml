@@ -1,0 +1,30 @@
+#  https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+spring:
+  jpa:
+    show-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      #  http://docs.jboss.org/hibernate/orm/5.3/userguide/html_single/Hibernate_User_Guide.html#configurations
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 20
+        # https://stackoverflow.com/questions/21257819/what-is-the-difference-between-hibernate-jdbc-fetch-size-and-hibernate-jdbc-batc
+        jdbc.batch_size: 20
+        id.new_generator_mappings: false
+  datasource:
+    # ImMemory
+    url: jdbc:h2:mem:voting
+    #    tcp: jdbc:h2:tcp://localhost:9092/mem:voting
+    # Absolute path
+    #    url: jdbc:h2:C:/projects/bootjava/restorant-voting/db/voting
+    #    tcp: jdbc:h2:tcp://localhost:9092/C:/projects/bootjava/restorant-voting/db/voting
+    # Relative path form current dir
+    #    url: jdbc:h2:./db/voting
+    # Relative path from home
+    #    url: jdbc:h2:~/voting
+    #    tcp: jdbc:h2:tcp://localhost:9092/~/voting
+    username: sa
+    password:
+  h2.console.enabled: true
