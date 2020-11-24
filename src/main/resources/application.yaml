@@ -33,18 +33,18 @@ spring:
     basePath: /api
     returnBodyOnCreate: true
 
-    #  https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#security-properties
-  security:
-    user:
-      name: user
-      password: password
-      roles: USER
+#  https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#security-properties
+#  security:
+#    user:
+#      name: user
+#      password: password
+#      roles: USER
 
 logging:
   level:
     root: WARN
     ru.javaops.bootjava: DEBUG
-    org.springframework.security.web.FilterChainProxy: DEBUG
+#    org.springframework.security.web.FilterChainProxy: DEBUG
 
 # Jackson Serialization Issue Resolver
 #  jackson:
