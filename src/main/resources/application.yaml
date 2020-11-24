@@ -32,3 +32,10 @@ spring:
     #  https://docs.spring.io/spring-data/rest/docs/current/reference/html/#getting-started.basic-settings
     basePath: /api
     returnBodyOnCreate: true
+
+# Jackson Serialization Issue Resolver
+#  jackson:
+#    visibility.field: any
+#    visibility.getter: none
+#    visibility.setter: none
+#    visibility.is-getter: none
