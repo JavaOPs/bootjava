@@ -31,6 +31,7 @@ spring:
   data.rest:
     #  https://docs.spring.io/spring-data/rest/docs/current/reference/html/#getting-started.basic-settings
     basePath: /api
+    defaultPageSize: 20
     returnBodyOnCreate: true
 
 #  https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#security-properties
@@ -45,6 +46,12 @@ logging:
     root: WARN
     ru.javaops.bootjava: DEBUG
 #    org.springframework.security.web.FilterChainProxy: DEBUG
+
+server.servlet:
+  encoding:
+    charset: UTF-8 # Charset of HTTP requests and responses. Added to the "Content-Type" header if not set explicitly
+    enabled: true # Enable http encoding support
+    force: true
 
 # Jackson Serialization Issue Resolver
 #  jackson:
