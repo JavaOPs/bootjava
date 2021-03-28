@@ -17,6 +17,7 @@
 
     <properties>
         <java.version>15</java.version>
+        <springdoc.version>1.5.6</springdoc.version>
     </properties>
 
     <dependencies>
@@ -48,6 +49,23 @@
                     <scope>runtime</scope>
                 </dependency>
         -->
+
+        <!--Swagger-->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-data-rest</artifactId>
+            <version>${springdoc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-security</artifactId>
+            <version>${springdoc.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -58,7 +76,7 @@
             <optional>true</optional>
         </dependency>
 
-<!--    https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.4-Release-Notes#junit-5s-vintage-engine-removed-from-spring-boot-starter-test-->
+        <!--    https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.4-Release-Notes#junit-5s-vintage-engine-removed-from-spring-boot-starter-test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
