@@ -36,11 +36,13 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
  * RequestMapping("/${spring.data.rest.basePath}/account") give "Not enough variable values"
  */
 @RestController
-@RequestMapping("/api/account")
+@RequestMapping(AccountController.URL)
 @AllArgsConstructor
 @Slf4j
 @Tag(name = "Account Controller")
 public class AccountController implements RepresentationModelProcessor<RepositoryLinksResource> {
+    static final String URL = "/api/account";
+
     @SuppressWarnings("unchecked")
     private static final RepresentationModelAssemblerSupport<User, EntityModel<User>> ASSEMBLER =
             new RepresentationModelAssemblerSupport<>(AccountController.class, (Class<EntityModel<User>>) (Class<?>) EntityModel.class) {
