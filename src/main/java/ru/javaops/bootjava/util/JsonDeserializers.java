@@ -5,10 +5,12 @@ import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
+import lombok.experimental.UtilityClass;
 import ru.javaops.bootjava.config.WebSecurityConfig;
 
 import java.io.IOException;
 
+@UtilityClass
 public class JsonDeserializers {
 
     // https://stackoverflow.com/a/60995048/548473
