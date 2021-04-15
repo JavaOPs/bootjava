@@ -3,6 +3,8 @@ package ru.javaops.bootjava.web;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.data.rest.webmvc.RepositoryLinksResource;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.MediaTypes;
@@ -62,6 +64,7 @@ public class AccountController implements RepresentationModelProcessor<Repositor
 
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @CacheEvict(value = "users", key = "#authUser.username")
     public void delete(@AuthenticationPrincipal AuthUser authUser) {
         log.info("delete {}", authUser);
         userRepository.deleteById(authUser.id());
@@ -82,7 +85,8 @@ public class AccountController implements RepresentationModelProcessor<Repositor
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@Valid @RequestBody User user, @AuthenticationPrincipal AuthUser authUser) {
+    @CachePut(value = "users", key = "#authUser.username")
+    public User update(@Valid @RequestBody User user, @AuthenticationPrincipal AuthUser authUser) {
         log.info("update {} to {}", authUser, user);
         User oldUser = authUser.getUser();
         ValidationUtil.assureIdConsistent(user, oldUser.id());
@@ -90,7 +94,7 @@ public class AccountController implements RepresentationModelProcessor<Repositor
         if (user.getPassword() == null) {
             user.setPassword(oldUser.getPassword());
         }
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 
 /*
