@@ -1,4 +1,4 @@
-package ru.javaops.bootjava;
+package ru.javaops.bootjava.web;
 
 import lombok.Getter;
 import lombok.ToString;
