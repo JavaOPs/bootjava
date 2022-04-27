@@ -69,4 +69,16 @@ class AccountControllerTest extends AbstractControllerTest {
                 .andExpect(status().isNoContent());
         UserTestUtil.assertEquals(updated, userRepository.findById(USER_ID).orElseThrow());
     }
+
+    @Test
+    @WithUserDetails(value = USER_MAIL)
+    void updateHtmlUnsafe() throws Exception {
+        User updated = UserTestUtil.getUpdated();
+        updated.setFirstName("<script>alert(123)</script>");
+        perform(MockMvcRequestBuilders.put(URL)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(writeValue(updated)))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
 }
