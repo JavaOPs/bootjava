@@ -28,25 +28,18 @@ spring:
     #    tcp: jdbc:h2:tcp://localhost:9092/~/bootjava
     username: sa
     password:
-  h2.console.enabled: true
 
-  data.rest:
-    #  https://docs.spring.io/spring-data/rest/docs/current/reference/html/#getting-started.basic-settings
-    basePath: /api
-    defaultPageSize: 20
-    returnBodyOnCreate: true
+# Jackson Serialization Issue Resolver
+  jackson.visibility:
+    field: any
+    getter: none
+    setter: none
+    is-getter: none
 
   # https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#common-application-properties-cache
   cache:
     cache-names: users
     caffeine.spec: maximumSize=5000,expireAfterAccess=60s
-
-#  https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#security-properties
-#  security:
-#    user:
-#      name: user
-#      password: password
-#      roles: USER
 
 logging:
   level:
@@ -59,10 +52,3 @@ server.servlet:
     charset: UTF-8 # Charset of HTTP requests and responses. Added to the "Content-Type" header if not set explicitly
     enabled: true # Enable http encoding support
     force: true
-
-# Jackson Serialization Issue Resolver
-#  jackson:
-#    visibility.field: any
-#    visibility.getter: none
-#    visibility.setter: none
-#    visibility.is-getter: none
