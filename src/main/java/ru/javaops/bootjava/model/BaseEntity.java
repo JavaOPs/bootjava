@@ -1,14 +1,12 @@
 package ru.javaops.bootjava.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.domain.Persistable;
 import org.springframework.data.util.ProxyUtils;
 import org.springframework.util.Assert;
 import ru.javaops.bootjava.HasId;
-
-import javax.persistence.*;
 
 @MappedSuperclass
 //  https://stackoverflow.com/a/6084701/548473
@@ -30,7 +28,6 @@ public abstract class BaseEntity implements Persistable<Integer>, HasId {
         return id;
     }
 
-    @JsonIgnore
     @Override
     public boolean isNew() {
         return id == null;

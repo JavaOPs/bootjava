@@ -1,5 +1,6 @@
 package ru.javaops.bootjava.web.user;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
@@ -7,9 +8,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import ru.javaops.bootjava.HasIdAndEmail;
 import ru.javaops.bootjava.repository.UserRepository;
-import ru.javaops.bootjava.web.SecurityUtil;
-
-import javax.servlet.http.HttpServletRequest;
+import ru.javaops.bootjava.web.AuthUser;
 
 @Component
 @AllArgsConstructor
@@ -33,13 +32,13 @@ public class UniqueMailValidator implements org.springframework.validation.Valid
                         if (request.getMethod().equals("PUT")) {  // UPDATE
                             int dbId = dbUser.id();
 
-                            // it is ok, if update ourself
+                            // it is ok, if update ourselves
                             if (user.getId() != null && dbId == user.id()) return;
 
                             // Workaround for update with user.id=null in request body
                             // ValidationUtil.assureIdConsistent called after this validation
                             String requestURI = request.getRequestURI();
-                            if (requestURI.endsWith("/" + dbId) || (dbId == SecurityUtil.authId() && requestURI.contains("/profile")))
+                            if (requestURI.endsWith("/" + dbId) || (dbId == AuthUser.authId() && requestURI.contains("/profile")))
                                 return;
                         }
                         errors.rejectValue("email", "", EXCEPTION_DUPLICATE_EMAIL);

@@ -1,13 +1,12 @@
 package ru.javaops.bootjava.to;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 import ru.javaops.bootjava.HasIdAndEmail;
 import ru.javaops.bootjava.util.validation.NoHtml;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
