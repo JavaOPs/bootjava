@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 import ru.javaops.bootjava.HasIdAndEmail;
-import ru.javaops.bootjava.util.validation.NoHtml;
+import ru.javaops.bootjava.validation.NoHtml;
 
 @Value
 @EqualsAndHashCode(callSuper = true)

@@ -3,9 +3,7 @@ package ru.javaops.bootjava.model;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.domain.Persistable;
 import org.springframework.data.util.ProxyUtils;
-import org.springframework.util.Assert;
 import ru.javaops.bootjava.HasId;
 
 @MappedSuperclass
@@ -15,23 +13,12 @@ import ru.javaops.bootjava.HasId;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-public abstract class BaseEntity implements Persistable<Integer>, HasId {
+public abstract class BaseEntity implements HasId {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(accessMode = Schema.AccessMode.READ_ONLY) // https://stackoverflow.com/a/28025008/548473
     protected Integer id;
-
-    // doesn't work for hibernate lazy proxy
-    public int id() {
-        Assert.notNull(id, "Entity must have id");
-        return id;
-    }
-
-    @Override
-    public boolean isNew() {
-        return id == null;
-    }
 
     //    https://stackoverflow.com/questions/1638723
     @Override

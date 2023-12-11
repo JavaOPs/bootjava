@@ -13,8 +13,8 @@ import ru.javaops.bootjava.model.User;
 import java.net.URI;
 import java.util.List;
 
-import static ru.javaops.bootjava.util.validation.ValidationUtil.assureIdConsistent;
-import static ru.javaops.bootjava.util.validation.ValidationUtil.checkNew;
+import static ru.javaops.bootjava.web.RestValidation.assureIdConsistent;
+import static ru.javaops.bootjava.web.RestValidation.checkNew;
 
 @RestController
 @RequestMapping(value = AdminUserController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)

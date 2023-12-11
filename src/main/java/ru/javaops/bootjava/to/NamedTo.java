@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import ru.javaops.bootjava.util.validation.NoHtml;
+import ru.javaops.bootjava.validation.NoHtml;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

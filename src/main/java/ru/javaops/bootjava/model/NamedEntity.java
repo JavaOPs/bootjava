@@ -8,7 +8,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.javaops.bootjava.util.validation.NoHtml;
+import ru.javaops.bootjava.validation.NoHtml;
 
 
 @MappedSuperclass

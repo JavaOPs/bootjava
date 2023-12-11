@@ -16,8 +16,8 @@ import ru.javaops.bootjava.web.AuthUser;
 
 import java.net.URI;
 
-import static ru.javaops.bootjava.util.validation.ValidationUtil.assureIdConsistent;
-import static ru.javaops.bootjava.util.validation.ValidationUtil.checkNew;
+import static ru.javaops.bootjava.web.RestValidation.assureIdConsistent;
+import static ru.javaops.bootjava.web.RestValidation.checkNew;
 
 @RestController
 @RequestMapping(value = ProfileController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
