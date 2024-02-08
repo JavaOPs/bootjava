@@ -5,4 +5,6 @@ public class TestClass {
     private String name;
     private String surname;
 
+    private String fullname;
+
 }
