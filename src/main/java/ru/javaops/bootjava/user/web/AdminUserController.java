@@ -18,7 +18,6 @@ import static ru.javaops.bootjava.common.validation.ValidationUtil.checkNew;
 
 @RestController
 @RequestMapping(value = AdminUserController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-// TODO: cache only most requested, seldom changed data!
 public class AdminUserController extends AbstractUserController {
 
     static final String REST_URL = "/api/admin/users";
@@ -33,7 +32,9 @@ public class AdminUserController extends AbstractUserController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {
+        User user = repository.getExisted(id);
         super.delete(id);
+        userCache.removeUserFromCache(user.getEmail());
     }
 
     @GetMapping
@@ -59,6 +60,7 @@ public class AdminUserController extends AbstractUserController {
         log.info("update {} with id={}", user, id);
         assureIdConsistent(user, id);
         repository.prepareAndSave(user);
+        userCache.removeUserFromCache(user.getEmail());
     }
 
     @GetMapping("/by-email")
@@ -74,5 +76,6 @@ public class AdminUserController extends AbstractUserController {
         log.info(enabled ? "enable {}" : "disable {}", id);
         User user = repository.getExisted(id);
         user.setEnabled(enabled);
+        userCache.removeUserFromCache(user.getEmail());
     }
 }

@@ -2,6 +2,7 @@ package ru.javaops.bootjava.user.web;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserCache;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import ru.javaops.bootjava.user.model.User;
@@ -11,6 +12,9 @@ import static org.slf4j.LoggerFactory.getLogger;
 
 public abstract class AbstractUserController {
     protected final Logger log = getLogger(getClass());
+
+    @Autowired
+    protected UserCache userCache;
 
     @Autowired
     protected UserRepository repository;

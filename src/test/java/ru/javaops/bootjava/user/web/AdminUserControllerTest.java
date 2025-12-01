@@ -61,7 +61,7 @@ class AdminUserControllerTest extends AbstractControllerTest {
         perform(MockMvcRequestBuilders.delete(REST_URL_SLASH + USER_ID))
                 .andDo(print())
                 .andExpect(status().isNoContent());
-        assertFalse(repository.findById(USER_ID).isPresent());
+        assertFalse(repository.findByEmailIgnoreCase(USER_MAIL).isPresent());
     }
 
     @Test
