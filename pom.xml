@@ -5,20 +5,20 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.3</version>
+        <version>4.0.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ru.javaops</groupId>
     <artifactId>bootjava</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <name>BootJava</name>
-    <description>Spring Boot 3.x HATEOAS application (BootJava)</description>
-    <url>https://javaops.ru/view/bootjava</url>
+    <description>Spring Boot 4</description>
+    <url>https://javaops.ru/view/bootjava4</url>
 
     <properties>
-        <java.version>21</java.version>
-        <springdoc.version>2.6.0</springdoc.version>
-        <jsoup.version>1.18.1</jsoup.version>
+        <java.version>25</java.version>
+        <springdoc.version>3.0.0</springdoc.version>
+        <jsoup.version>1.21.2</jsoup.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -41,10 +41,10 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!--        jackson-->
+        <!-- https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-4.0-Migration-Guide#upgrading-jackson -->
         <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-hibernate5-jakarta</artifactId>
+            <groupId>tools.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-hibernate7</artifactId>
         </dependency>
 
         <!--Springdoc / Swagger-->
@@ -78,21 +78,22 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>annotations</artifactId>
-            <version>3.0.1</version>
-            <scope>compile</scope>
-        </dependency>
 
+        <!--        Tests-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--        https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-4.0-Migration-Guide#module-dependencies-->
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webmvc-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security-test</artifactId>
             <scope>test</scope>
         </dependency>
         <!--        https://youtrack.jetbrains.com/issue/IDEA-231927-->
@@ -106,20 +107,20 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <excludes>
-                        <exclude>
+                    <annotationProcessorPaths>
+                        <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                        </exclude>
-                        <exclude>
-                            <groupId>com.google.code.findbugs</groupId>
-                            <artifactId>annotations</artifactId>
-                        </exclude>
-                    </excludes>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <!--https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven -->

@@ -10,7 +10,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.lang.NonNull;
+import org.jspecify.annotations.NonNull;
 import ru.javaops.bootjava.common.HasIdAndEmail;
 import ru.javaops.bootjava.common.model.NamedEntity;
 import ru.javaops.bootjava.common.validation.NoHtml;

@@ -1,7 +1,7 @@
 package ru.javaops.bootjava.app;
 
 import lombok.Getter;
-import org.springframework.lang.NonNull;
+import org.jspecify.annotations.NonNull;
 import ru.javaops.bootjava.user.model.Role;
 import ru.javaops.bootjava.user.model.User;
 

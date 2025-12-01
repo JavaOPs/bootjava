@@ -1,17 +1,17 @@
 <img src="http://javaops.ru/static/img/logo/javaops_30.png" width="223"/>
 
-Открытый курс для всех желающих приобщиться к живой современной разработке на Java
-# [Разработка Spring Boot 3.x HATEOAS приложения (BootJava)](http://javaops.ru/view/bootjava?ref=gh)
-## [Программа](http://javaops.ru/view/bootjava#program)
+# [Spring Boot 4 / Spring 7.0, JDK 25](https://javaops.pro/view/bootjava4?ref=gh)
 
-### Java приложения на самом современном и востребованном стеке: Spring Boot 3.x, Spring Data Rest/HATEOAS, Lombok, JPA, H2, ....
-Мы создадим с нуля основу любого современного REST веб-приложения: аутентификация и авторизация на основе ролей, регистрация пользователя в приложении, управление своим профилем и администрирование пользователей.
+Migration of [Spring Boot 3.x + HATEOAS (BootJava)](https://javaops.pro/view/bootjava?ref=gh) to a new stack: Spring Boot 4, Spring 7, JDK 25     
+Implementation of the functionality of any modern web application: authentication and authorization based on roles, user registration in the application, profile management and user administration.
+
 -------------------------------------------------------------
-- Stack: [JDK 17](http://jdk.java.net/17/), Spring Boot 3.x, Lombok, H2, Caffeine Cache, SpringDoc OpenApi 2.x
+- Stack: [JDK 25](http://jdk.java.net/25/), Spring Boot 4.x, Spring 7, SpringDoc OpenApi 3.x, Jackson 3, Lombok, H2, Caffeine Cache 
 - Run: `mvn spring-boot:run` in root directory.
 -----------------------------------------------------
-[REST API documentation](http://localhost:8080/)
-Креденшелы:
+### [REST API documentation](http://localhost:8080/)   
+  
+Credentials:
 ```
 User:  user@yandex.ru / password
 Admin: admin@gmail.com / admin
