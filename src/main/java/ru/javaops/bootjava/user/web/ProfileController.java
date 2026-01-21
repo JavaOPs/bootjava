@@ -35,8 +35,7 @@ public class ProfileController extends AbstractUserController {
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@AuthenticationPrincipal AuthUser authUser) {
-        super.delete(authUser.id());
-        userCache.removeUserFromCache(authUser.getUsername());
+        super.delete(authUser.id(), authUser.getUsername());
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -57,7 +56,6 @@ public class ProfileController extends AbstractUserController {
         log.info("update {} with id={}", userTo, authUser.id());
         assureIdConsistent(userTo, authUser.id());
         User user = authUser.getUser();
-        repository.prepareAndSave(UsersUtil.updateFromTo(user, userTo));
-        userCache.removeUserFromCache(authUser.getUsername());
+        super.update(UsersUtil.updateFromTo(user, userTo), authUser.getUsername());
     }
 }

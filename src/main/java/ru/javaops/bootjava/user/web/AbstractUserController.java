@@ -32,8 +32,14 @@ public abstract class AbstractUserController {
         return repository.getExisted(id);
     }
 
-    public void delete(int id) {
+    public void delete(int id, String invalidateEmail) {
         log.info("delete {}", id);
         repository.deleteExisted(id);
+        userCache.removeUserFromCache(invalidateEmail);
+    }
+
+    public void update(User user, String invalidateEmail) {
+        repository.prepareAndSave(user);
+        userCache.removeUserFromCache(invalidateEmail);
     }
 }

@@ -111,6 +111,27 @@ class AdminUserControllerTest extends AbstractControllerTest {
     }
 
     @Test
+    void updateEmail() throws Exception {
+        perform(MockMvcRequestBuilders.get(ProfileController.REST_URL)
+                .with(userHttpBasic(user)))
+                .andExpect(status().isOk());
+
+        User updated = getUpdated();
+        updated.setEmail(NEW_MAIL);
+        perform(MockMvcRequestBuilders.put(REST_URL_SLASH + USER_ID)
+                .with(userHttpBasic(admin))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(jsonWithPassword(updated, "newPass")))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+        USER_MATCHER.assertMatch(repository.getExisted(USER_ID), updated);
+
+        perform(MockMvcRequestBuilders.get(ProfileController.REST_URL)
+                .with(userHttpBasic(user)))
+                .andExpect(status().isUnauthorized());
+    }
+
+    @Test
     @WithUserDetails(value = ADMIN_MAIL)
     void createWithLocation() throws Exception {
         User newUser = getNew();

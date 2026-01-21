@@ -29,13 +29,11 @@ public class AdminUserController extends AbstractUserController {
         return super.get(id);
     }
 
-    @Override
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {
         User user = repository.getExisted(id);
-        super.delete(id);
-        userCache.removeUserFromCache(user.getEmail());
+        super.delete(id, user.getEmail());
     }
 
     @GetMapping
@@ -60,8 +58,8 @@ public class AdminUserController extends AbstractUserController {
     public void update(@Valid @RequestBody User user, @PathVariable int id) {
         log.info("update {} with id={}", user, id);
         assureIdConsistent(user, id);
-        repository.prepareAndSave(user);
-        userCache.removeUserFromCache(user.getEmail());
+        User dbUser = repository.getExisted(id);
+        super.update(user, dbUser.getEmail());
     }
 
     @GetMapping("/by-email")
