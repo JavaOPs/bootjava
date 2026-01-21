@@ -8,6 +8,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.transaction.annotation.Transactional;
+import ru.javaops.bootjava.app.config.WebConfig;
 
 //https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-testing-spring-boot-applications
 @SpringBootTest
@@ -21,6 +22,7 @@ public abstract class AbstractControllerTest {
     private MockMvc mockMvc;
 
     protected ResultActions perform(MockHttpServletRequestBuilder builder) throws Exception {
+        builder.header(WebConfig.VERSION_HEADER, WebConfig.CURRENT_VERSION);
         return mockMvc.perform(builder);
     }
 }

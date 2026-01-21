@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import ru.javaops.bootjava.app.config.WebConfig;
 import ru.javaops.bootjava.user.model.User;
 
 import java.net.URI;
@@ -17,7 +18,7 @@ import static ru.javaops.bootjava.common.validation.ValidationUtil.assureIdConsi
 import static ru.javaops.bootjava.common.validation.ValidationUtil.checkNew;
 
 @RestController
-@RequestMapping(value = AdminUserController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = AdminUserController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE, version = WebConfig.CURRENT_VERSION)
 public class AdminUserController extends AbstractUserController {
 
     static final String REST_URL = "/api/admin/users";

@@ -39,10 +39,12 @@ spring:
       enabled: true
       force: true
 
+#  mvc.apiversion.use.header: API-Version
+
 logging:
   level:
     root: WARN
     ru.javaops.bootjava: DEBUG
     org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver: DEBUG
 
-springdoc.swagger-ui.path: /
+#springdoc.swagger-ui.path: /

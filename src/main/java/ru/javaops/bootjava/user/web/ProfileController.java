@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.javaops.bootjava.app.AuthUser;
+import ru.javaops.bootjava.app.config.WebConfig;
 import ru.javaops.bootjava.user.UsersUtil;
 import ru.javaops.bootjava.user.model.User;
 import ru.javaops.bootjava.user.to.UserTo;
@@ -20,7 +21,7 @@ import static ru.javaops.bootjava.common.validation.ValidationUtil.assureIdConsi
 import static ru.javaops.bootjava.common.validation.ValidationUtil.checkNew;
 
 @RestController
-@RequestMapping(value = ProfileController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = ProfileController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE, version = WebConfig.CURRENT_VERSION)
 @Slf4j
 public class ProfileController extends AbstractUserController {
     static final String REST_URL = "/api/profile";
